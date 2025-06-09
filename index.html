@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrea Ambroggi - 3D Game Programmer & Blender models</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            /* Fix for hover overlap issue */
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            /* Ensure hovered card appears above others */
+            z-index: 10;
+        }
+
+        .project-image {
+            /* Use aspect ratio instead of fixed height for better responsiveness */
+            aspect-ratio: 16/9;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Fixed image styling for proper aspect ratio and responsiveness */
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Changed from cover to contain to prevent cropping */
+            object-position: center;
+            background: #f8f9fa; /* Light background in case image doesn't fill container */
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-tag {
+            background: #f8f9fa;
+            color: #495057;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            border: 1px solid #dee2e6;
+        }
+
+        .experience-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #e74c3c;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .experience-title {
+            font-size: 1.3em;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .experience-period {
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .gallery-container {
+            margin-bottom: 30px;
+        }
+
+        .gallery-group {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .gallery-group-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            /* Fix for gallery hover overlap */
+            z-index: 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02); /* Reduced scale to minimize overlap */
+            /* Ensure hovered gallery item appears above others */
+            z-index: 10;
+        }
+
+        .gallery-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 15px 10px 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay p {
+            margin: 0;
+            font-size: 0.9em;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Fixed image styles for proper display and responsiveness */
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Changed to contain to prevent cropping */
+            object-position: center;
+            border-radius: 10px;
+            background: #f8f9fa; /* Light background for padding */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .main-content {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 10px; /* Reduced gap on mobile */
+            }
+
+            .gallery-image-placeholder {
+                font-size: 2em;
+            }
+
+            /* Adjust project image aspect ratio on mobile */
+            .project-image {
+                aspect-ratio: 4/3; /* Better for mobile viewing */
+            }
+
+            /* Reduce hover effects on mobile to prevent overlap */
+            .gallery-item:hover {
+                transform: scale(1.01);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="profile-pic">YN</div>
+                <h1> Andrea Ambroggi</h1>
+                <p class="subtitle">3D Game Developer & Technical Artist</p>
+                <div class="social-links">
+                    <a href=" https://github.com/JustABeta-code " class="social-link">
+                        <span>⚡</span> GitHub
+                    </a>
+                    <a href=" https://www.linkedin.com/in/andrea-a-b1646836a/ " class="social-link">
+                        <span>💼</span> LinkedIn
+                    </a>
+                    <a href=" mailto:andreaambroggi03@gmail.com " class="social-link">
+                        <span>📧</span> Email : andreaambroggi03@gmail.com
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>🎮 Game Engines</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Unity 3D</span>
+                            <span class="skill-tag">Unreal Engine 5</span>
+                            <span class="skill-tag">Rpg Maker</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>🎨 3D Modeling, UVs and Sculpting</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Blender</span>
+                            <span class="skill-tag">3D Modeling</span>
+                            <span class="skill-tag">Texturing</span>
+                            <span class="skill-tag">Sculpting</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>💻 Programming</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Blueprint</span>
+                            <span class="skill-tag">Python</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>🛠 Tools & Technologies</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Visual Studio</span>
+                            <span class="skill-tag">Substance Painter</span>
+                            <span class="skill-tag">Photoshop</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/TheAscendedOne.jpg" alt="The Ascended One Game">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">The Ascended One</h3>
+                            <p class="project-description">Created core gameplay mechanics of a 3D Turn-based Rpg such as a 2D-based grid, A* pathfinding and turn managers. Implemented a gris system without the creation of multiple gameObjects, optimizing the performance and improving the frame rate, an A* pathfinding-based movement capping at the maximum movement of the currently selected character and and varius managers such as character managers, turn managers and the player's own input manager.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Unity</span>
+                                <span class="tech-tag">C#</span>
+                                <span class="tech-tag">A* pathfinding</span>
+                                <span class="tech-tag">Turn Manager</span>
+                                <span class="tech-tag">Input Manager</span>
+                                <span class="tech-tag">Character Manager</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/Blender.jpg" alt="Blender 3D Models">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Character Models</h3>
+                            <p class="project-description">Created character designs and models in Blender including charatcers and weapons, including texturing, UVs and sculpting.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Blender</span>
+                                <span class="tech-tag">Modelling</span>
+                                <span class="tech-tag">UVs</span>
+                                <span class="tech-tag">Sculpting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">3D Model Gallery</h2>
+                <div class="gallery-container">
+                    <div class="gallery-group">
+                        <h3 class="gallery-group-title">Character Models</h3>
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="images/GengarFront.jpg" alt="GengarFront" class="gallery-image">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/GengarSide.jpg" alt="GengarSide" class="gallery-image">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/ZoraFront.jpg" alt="Chibi Zora Front" class="gallery-image">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/ZoraSide.jpg" alt="Chibi Zora Side" class="gallery-image">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/ZoraDetails.jpg" alt="Chibi Zora details" class="gallery-image">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-group">
+                        <h3 class="gallery-group-title">Weapons & Props</h3>
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="images/WarhammerAndZweinhander.jpg" alt="Zweinhander and Warhammer Model" class="gallery-image">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/ZweinhanderUV.jpg" alt="Zweinhander UV" class="gallery-image">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/WarhammerUV.jpg" alt="WarHammer UV" class="gallery-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Experience</h2>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Highschool</div>
+                            <div style="color: #666; margin-top: 5px;">Liceo Rinaldo Corso</div>
+                        </div>
+                        <div class="experience-period">2017 - 2022</div>
+                    </div>
+                    <p>Started programming in C/C++ and Python also working in groups.</p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Computer Science in University</div>
+                            <div style="color: #666; margin-top: 5px;">UNIMORE</div>
+                        </div>
+                        <div class="experience-period">2022 - 2024</div>
+                    </div>
+                    <p>Continued programming in C/C++ meanwhile working with some database softwares</p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Game Programming</div>
+                            <div style="color: #666; margin-top: 5px;">ITS Olivetti</div>
+                        </div>
+                        <div class="experience-period">2022 - 2024</div>
+                    </div>
+                    <p>Started programming in C# and creating 3D games and models, continuing to program in C++</p>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
