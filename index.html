@@ -113,6 +113,8 @@
         @media (min-width: 1200px) { .toc { display: flex; } }
 
         /* ── MOBILE BOTTOM NAV BAR ── */
+        /* Replaces the floating pill on screens too narrow for it.
+           Hidden at 1200px+ where the pill takes over. */
         .mobile-nav {
             display: none;
             position: fixed;
@@ -146,6 +148,7 @@
 
         @media (max-width: 1200px) {
             .mobile-nav { display: flex; }
+            /* Push content up so it isn't hidden behind the bar */
             main   { padding-bottom: 54px; }
             footer { padding-bottom: calc(1.2rem + 54px); }
         }
@@ -169,9 +172,10 @@
 
         section { padding: 4rem 4rem; max-width: 1100px; }
 
+        /* Content grows with viewport at larger sizes */
         @media (min-width: 1440px) {
             section { padding: 4rem 5rem; }
-            #hero   { padding: 1rem 5rem; }
+            #hero   { padding: 2rem 5rem; }
             #social { padding: 4rem 5rem; }
         }
         @media (min-width: 1920px) {
@@ -179,12 +183,12 @@
         }
         @media (min-width: 2560px) {
             section { max-width: 1640px; padding: 4rem 6rem; }
-            #hero   { padding: 1rem 6rem; }
+            #hero   { padding: 2rem 6rem; }
             #social { padding: 4rem 6rem; }
         }
         @media (min-width: 3440px) {
             section { max-width: 1960px; padding: 4rem 7rem; }
-            #hero   { padding: 1rem 7rem; }
+            #hero   { padding: 2rem 7rem; }
             #social { padding: 4rem 7rem; }
         }
 
@@ -194,11 +198,10 @@
         .section-rule { height: 1px; background: linear-gradient(90deg, var(--cyan) 0%, transparent 60%); margin-top: 0.9rem; opacity: 0.35; }
 
         /* ── SECTION 1: HERO ── */
-        /* ↓ min-height reduced from 76vh → 46vh; padding tightened top/bottom */
         #hero {
-            min-height: calc(55vh - var(--nav-height));
+            min-height: calc(50vh - var(--nav-height));
             display: flex; flex-direction: column; justify-content: center;
-            padding: 1rem 4rem; max-width: 1100px;
+            padding: 2rem 4rem; max-width: 1100px;
         }
 
         .hero-prompt { font-size: 12px; color: var(--green); margin-bottom: 0.8rem; }
@@ -237,6 +240,7 @@
         #skills { border-top: 1px solid var(--border); }
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 1.1rem; }
 
+        /* Category card — purely structural, no hover/click feedback */
         .skill-category { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; }
         .skill-category-label {
             font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
@@ -246,6 +250,7 @@
         .skill-category-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
         .skill-list { display: flex; flex-direction: column; gap: 3px; }
 
+        /* Individual skill items — these are the interactive elements */
         .skill-item {
             display: flex; align-items: center; gap: 10px;
             padding: 7px 10px; border-radius: 4px;
@@ -263,6 +268,7 @@
         /* ── SECTION 3: PROJECTS ── */
         #projects { border-top: 1px solid var(--border); }
 
+        /* Responsive: 1 col mobile → 2 col tablet → 3 col desktop */
         .projects-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
         @media (min-width: 640px)  { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1024px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -287,6 +293,7 @@
         .tag-tool    { background: rgba(255,170,92,0.1);  color: var(--orange); border: 1px solid rgba(255,170,92,0.2);  }
         .project-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
         .project-role  { font-size: 11px; color: var(--orange); margin-top: 0.5rem; }
+        /* Matches .modal-label so card and modal share the same label aesthetic */
         .card-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.3rem; margin-top: 0.6rem; }
 
         /* ── MODALS ── */
@@ -300,6 +307,7 @@
         .modal-close:hover { color: var(--red); border-color: var(--red); }
         .modal-body { padding: 1.4rem; }
 
+        /* Media wrapper in modal: accepts img or video */
         .modal-media-wrap { width: 100%; border-radius: 6px; overflow: hidden; margin-bottom: 1.2rem; background: var(--bg-surface); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; min-height: 80px; color: var(--muted); font-size: 12px; text-align: center; }
         .modal-media-wrap img { width: 100%; max-height: 280px; object-fit: cover; display: block; }
         .modal-media-wrap video { width: 100%; max-height: 280px; display: block; background: #000; }
@@ -315,7 +323,7 @@
         .tl-item { position: relative; margin-bottom: 1rem; }
         .tl-dot { position: absolute; left: -2rem; top: 14px; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--cyan); background: var(--bg); transition: background var(--ease), box-shadow var(--ease); z-index: 1; }
         .tl-item.open .tl-dot { background: var(--cyan); box-shadow: 0 0 14px rgba(79,200,255,0.5); }
-        .tl-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 0.9rem 1.1rem; background: var(--card); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: border-color var(--ease), background var(--ease); }
+        .tl-head { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 1rem; padding: 0.9rem 1.1rem; background: var(--card); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: border-color var(--ease), background var(--ease); }
         .tl-head:hover { border-color: var(--border-glow); background: var(--card-hover); }
         .tl-item.open .tl-head { border-color: var(--cyan); border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: var(--border); }
         .tl-role   { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
@@ -328,9 +336,11 @@
         .tl-body { display: none; padding: 1rem 1.1rem; background: var(--bg-surface); border: 1px solid var(--cyan); border-top: none; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; font-size: 13px; color: var(--text); line-height: 1.8; }
         .tl-item.open .tl-body { display: block; }
 
+        /* Links inside experience body */
         .tl-body a { color: var(--cyan); border-bottom: 1px solid rgba(79,200,255,0.3); transition: border-color var(--ease); }
         .tl-body a:hover { border-bottom-color: var(--cyan); }
 
+        /* Closing brace — matches section-title size */
         .tl-close-tag { font-size: clamp(18px, 2.8vw, 26px); font-weight: 700; color: var(--muted); margin-top: 1.5rem; }
 
         /* ── SECTION 5: SOCIAL ── */
@@ -354,18 +364,32 @@
         .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* ── MOBILE & SMALL-SCREEN FIXES ── */
+        /* ══════════════════════════════════════════
+           MOBILE & SMALL-SCREEN FIXES
+           Covers: phones (≤480px), large phones /
+           small tablets (481px–768px), tablets in
+           landscape (769px–1199px).
+        ══════════════════════════════════════════ */
+
+        /* Tablet landscape — pull section padding in
+           so content isn't lost in wide margins */
         @media (max-width: 1199px) and (min-width: 769px) {
             section { padding: 3rem 2.5rem; }
-            #hero   { padding: 1rem 2.5rem; }
+            #hero   { padding: 2rem 2.5rem; }
             #social { padding: 3rem 2.5rem; }
         }
 
+        /* Phone landscape + large phones */
         @media (max-width: 768px) {
             section { padding: 3rem 1.5rem; padding-bottom: 1.5rem; }
-            #hero   { padding: 1rem 1.5rem; min-height: calc(44vh - var(--nav-height)); }
+            #hero   { padding: 2rem 1.5rem; min-height: calc(40vh - var(--nav-height)); }
             #social { padding: 3rem 1.5rem; }
 
+            /* ── MOBILE SECTION DIVIDERS ──────────────────────────
+               Replace the barely-visible 1px dark border with a
+               prominent gradient bar + code-comment label.
+               Each section except hero gets this treatment.
+            ─────────────────────────────────────────────────────── */
             #skills, #projects, #experience, #social {
                 border-top: none;
             }
@@ -384,13 +408,14 @@
                 width: calc(100% + 3rem);
             }
 
+            /* Skills: two columns on mobile so containers don't stretch full width */
             .skills-grid { grid-template-columns: repeat(2, 1fr); }
 
-            .tl-head { flex-wrap: wrap; gap: 0.5rem; }
-            .tl-right { text-align: left; flex-shrink: unset; }
-            .tl-period { white-space: normal; }
-            .tl-chevron { margin-left: auto; }
+            /* Timeline: stack role/org and date vertically so
+               nothing gets squashed on a narrow screen */
+            /* Timeline entries use grid so no mobile overrides needed */
 
+            /* Modal: minimal padding so it nearly fills the screen */
             .modal-overlay { padding: 0.5rem; align-items: flex-end; }
             .modal { max-height: 92vh; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
             .modal-head { padding: 1rem 1rem 0.75rem; }
@@ -398,18 +423,21 @@
             .modal-links { flex-direction: column; }
             .modal-links .btn { width: 100%; justify-content: center; }
 
+            /* Hero text: bump up min sizes so they stay readable */
             .hero-subtitle { font-size: 13px; }
             .hero-bio      { font-size: 13px; }
         }
 
+        /* Small phones (≤480px) — extra tightening */
         @media (max-width: 480px) {
             section { padding: 2.5rem 1.2rem; }
-            #hero   { padding: 1rem 1.2rem; }
+            #hero   { padding: 1.5rem 1.2rem; }
             #social { padding: 2.5rem 1.2rem; }
 
             .hero-cta { flex-direction: column; }
             .hero-cta .btn { width: 100%; justify-content: center; }
 
+            /* Social links: stack vertically */
             .social-links { flex-direction: column; }
             .social-link  { justify-content: center; }
         }
@@ -424,14 +452,15 @@
     <div class="toc-header">OUTLINE</div>
     <div class="toc-item active" data-target="hero"><span class="toc-icon">~</span> Hero</div>
     <div class="toc-item" data-target="skills"><span class="toc-icon fn">{}</span> Skills</div>
-    <div class="toc-item" data-target="projects"><span class="toc-icon kw">&#9654;</span> Projects</div>
-    <div class="toc-item" data-target="experience"><span class="toc-icon ty">&#x229E;</span> Experience</div>
+    <div class="toc-item" data-target="projects"><span class="toc-icon kw">▶</span> Projects</div>
+    <div class="toc-item" data-target="experience"><span class="toc-icon ty">⊞</span> Experience</div>
     <div class="toc-item" data-target="social"><span class="toc-icon str">@</span> Contact</div>
 </div>
 
 <!-- Top navigation bar -->
 <header class="topnav">
-    <div class="nav-logo"><span class="op">//</span> &lt; AmbroggiAndrea / Portfolio &gt;</div>
+    <!-- TEMPLATE: Replace "YourName" with a short version of your name -->
+    <div class="nav-logo"><span class="op">//</span> &lt;YourName /&gt;</div>
 </header>
 
 <main>
@@ -453,17 +482,27 @@
             <span class="boot-ready" id="boot-ready">&#x2714;&nbsp; Ready.</span>
         </div>
 
+        <!--
+            TEMPLATE ①: Set your name in the JS below: const NAME = "[YOUR FULL NAME]";
+            The typing animation will pick it up automatically.
+        -->
         <h1 class="hero-name">
             <span id="typed-name"></span><span class="cursor"></span>
         </h1>
 
+        <!--
+            TEMPLATE ②: Edit the subtitle text in the two spans below.
+        -->
         <p class="hero-subtitle">
             <span class="op">// </span>
             <span class="str">Game Programmer</span>
             <span class="op"> | </span>
-            <span class="ty">Unreal Engine &amp; Unity Developer</span>
+            <span class="ty">Unity &amp; Unreal Engine Developer</span>
         </p>
 
+        <!--
+            TEMPLATE ③: Replace this with your own 1–2 sentence bio.
+        -->
         <p class="hero-bio">
             <span class="op">/*</span>
             Write a short bio about yourself here. What drives you as a developer?
@@ -473,11 +512,35 @@
 
         <div class="hero-cta">
             <a href="#projects" class="btn btn-primary">&#9654;&nbsp; View Projects</a>
-            <a href="https://github.com/JustABeta-code/Portfolio/tree/main/CV/Ambroggi_Andrea_CV.pdf" target="_blank" class="btn btn-ghost">&#8595;&nbsp; Download CV</a>
+            <!-- TEMPLATE ④: Set href to your CV file path, e.g. "./cv.pdf" — or remove this button. -->
+            <a href="./cv.pdf" download class="btn btn-ghost">&#8595;&nbsp; Download CV</a>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════ SECTION 2: SKILLS -->
+    <!-- ═══════════════════════════════════════ SECTION 2: PROJECTS -->
+    <section id="projects" class="fade-in" data-mobile-label="// projects">
+        <div class="section-header">
+            <span class="section-comment">// featured work</span>
+            <h2 class="section-title">
+                Projects <span class="op">{</span>
+            </h2>
+            <div class="section-rule"></div>
+        </div>
+
+        <!--
+            TEMPLATE: Edit the projects array in the <script> section at the
+            bottom of this file. Each object there drives both this card grid
+            and the detail modal — you only need to edit one place per project.
+
+            To add a project: add a new object to the array.
+            To remove one:   delete its object from the array.
+        -->
+        <div class="projects-grid"></div>
+
+        <div class="tl-close-tag"><span class="op">}</span></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ SECTION 3: SKILLS -->
     <section id="skills" class="fade-in" data-mobile-label="// skills">
         <div class="section-header">
             <span class="section-comment">// technical competencies</span>
@@ -627,115 +690,7 @@
         <div class="tl-close-tag"><span class="op">}</span></div>
     </section>
 
-    <!-- ═══════════════════════════════════════ SECTION 3: PROJECTS -->
-    <section id="projects" class="fade-in" data-mobile-label="// projects">
-        <div class="section-header">
-            <span class="section-comment">// featured work</span>
-            <h2 class="section-title">
-                Projects <span class="op">{</span>
-            </h2>
-            <div class="section-rule"></div>
-        </div>
 
-        <!--
-            PROJECT CARD TEMPLATE
-            ─────────────────────────────────────────────────────────
-            Each card needs a matching modal below (same number).
-            Clicking the card opens modal-N where N = data-project.
-
-            THUMBNAIL — put ONE of these inside .project-thumb:
-              Image:  <img src="./img/project1.png" alt="My Game">
-              Video:  <video src="./video/project1.mp4" autoplay muted loop playsinline></video>
-              None:   keep the .project-thumb-placeholder emoji
-
-            Card body order: title → engine+language tags → GENRE label → genre tag(s) → role.
-            Tags: tag-engine / tag-lang / tag-genre / tag-tool
-
-            To ADD project 4 or 5:
-              1. Copy a card block, change data-project to 4 or 5.
-              2. Add a matching modal at the bottom of this file.
-            ─────────────────────────────────────────────────────────
-        -->
-        <div class="projects-grid">
-
-            <div class="project-card" data-project="1">
-                <div class="project-thumb">
-                    <!-- Replace with: <img src="./img/project1.png" alt="Project One">  -->
-                    <!-- or:           <video src="./video/project1.mp4" autoplay muted loop playsinline></video> -->
-                    <img src="./images/TheUnchosen.png" alt="Project One">
-                    <div class="project-thumb-overlay">&#9654;&nbsp; Open Project</div>
-                </div>
-                <div class="project-body">
-                    <div class="project-title">The Unchosen</div>
-                    <div class="tags">
-                        <span class="tag tag-engine">Unreal</span>
-                        <span class="tag tag-lang">C++</span>
-                        <span class="tag tag-lang">Blueprint</span>
-                    </div>
-                    <div class="card-label">Genre</div>
-                    <div class="tags">
-                        <span class="tag tag-genre">Souls-like</span>
-                        <span class="tag tag-genre">Dark fantasy</span>
-                        <span class="tag tag-genre">Atmospheric</span>
-                        <span class="tag tag-genre">Difficult</span>
-                        <span class="tag tag-genre">RPG</span>
-                    </div>
-                    <div class="project-role">// AI Programmer</div>
-                </div>
-            </div>
-
-            <div class="project-card" data-project="2">
-                <div class="project-thumb">
-                    <img src="./images/Tiranny_Of_Ghosts.jpg" alt="Project Two">
-                    <div class="project-thumb-overlay">&#9654;&nbsp; Open Project</div>
-                </div>
-                <div class="project-body">
-                    <div class="project-title">Tiranny of Ghosts</div>
-                    <div class="tags">
-                        <span class="tag tag-engine">Unity</span>
-                        <span class="tag tag-lang">C#</span>
-                    </div>
-                    <div class="card-label">Genre</div>
-                    <div class="tags">
-                        <span class="tag tag-genre">Action-Adventure</span>
-                        <span class="tag tag-genre">Medieval</span>
-                        <span class="tag tag-genre">Story-Rich</span>
-                        <span class="tag tag-genre">PvE</span>
-                        <span class="tag tag-genre">Puzzle</span>
-                    </div>
-                    <div class="project-role">// Gameplay Programmer</div>
-                </div>
-            </div>
-
-            <div class="project-card" data-project="3">
-                <div class="project-thumb">
-                    <img src="./images/TheAscendedOne.jpg" alt="Project Three">
-                    <div class="project-thumb-overlay">&#9654;&nbsp; Open Project</div>
-                </div>
-                <div class="project-body">
-                    <div class="project-title">The Ascended One</div>
-                    <div class="tags">
-                        <span class="tag tag-engine">Unity</span>
-                        <span class="tag tag-lang">C#</span>
-                    </div>
-                    <div class="card-label">Genre</div>
-                    <div class="tags">
-                        <span class="tag tag-genre">Roguelike</span>
-                        <span class="tag tag-genre">Turn-Based RPG</span>
-                        <span class="tag tag-genre">Strategy</span>
-                        <span class="tag tag-genre">Story-Rich</span>
-                        <span class="tag tag-genre">Difficult</span>
-                    </div>
-                    <div class="project-role">// Gameplay Programmer</div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="tl-close-tag"><span class="op">}</span></div>
-    </section>
-
-    <!-- ═══════════════════════════════════════ SECTION 4: EXPERIENCE -->
     <section id="experience" class="fade-in" data-mobile-label="// experience">
         <div class="section-header">
             <span class="section-comment">// career &amp; education</span>
@@ -850,6 +805,7 @@
 
         </div>
 
+        <!-- Closing brace — same font size as the opening title -->
         <div class="tl-close-tag"><span class="op">}</span></div>
     </section>
 
@@ -862,15 +818,18 @@
         </div>
 
         <div class="social-links">
-            <a href="https://github.com/JustABeta-code" target="_blank" class="social-link github">
+            <!-- TEMPLATE: Replace YOUR_GITHUB_USERNAME -->
+            <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" class="social-link github">
                 <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                 GitHub
             </a>
-            <a href="https://www.linkedin.com/in/andrea-a-b1646836a/" target="_blank" class="social-link linkedin">
+            <!-- TEMPLATE: Replace YOUR_LINKEDIN_HANDLE -->
+            <a href="https://linkedin.com/in/YOUR_LINKEDIN_HANDLE" target="_blank" class="social-link linkedin">
                 <svg class="social-icon" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 LinkedIn
             </a>
-            <a href="mailto:andreaambroggi03@gmail.com.com" class="social-link email">
+            <!-- TEMPLATE: Replace YOUR_EMAIL@example.com -->
+            <a href="mailto:YOUR_EMAIL@example.com" class="social-link email">
                 <svg class="social-icon" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
                 Email
             </a>
@@ -881,8 +840,9 @@
 
 </main>
 
+<!-- TEMPLATE: Replace [YOUR_NAME] -->
 <footer>
-    <span><span style="color:var(--dim)">// </span>Ambroggi_Andrea &mdash; Game Programmer</span>
+    <span><span style="color:var(--dim)">// </span>[YOUR_NAME] &mdash; Game Programmer</span>
     <span>Built with HTML &middot; CSS &middot; JS</span>
 </footer>
 
@@ -893,100 +853,21 @@
      Click outside the modal or press Escape to close it.
 ═══════════════════════════════════════════════════════ -->
 
-<div class="modal-overlay" id="modal-1" onclick="closeModalOutside(event)">
-    <div class="modal">
-        <div class="modal-head">
-            <div>
-                <div class="tags"><span class="tag tag-engine">Unity</span><span class="tag tag-lang">C#</span></div>
-                <div class="modal-title">Project Title One</div>
-            </div>
-            <button class="modal-close" onclick="closeModal('modal-1')">&#x2715;</button>
-        </div>
-        <div class="modal-body">
-            <div class="modal-media-wrap">
-                <!-- Replace with: <img src="./img/project1.png" alt="Project One"> -->
-                <!-- or:           <video src="./video/project1.mp4" controls muted loop playsinline></video> -->
-                <div class="modal-media-placeholder">Replace with &lt;img&gt; or &lt;video&gt;</div>
-            </div>
-            <p class="modal-label">Description</p>
-            <p class="modal-text">Write a 3–5 sentence description here. Genre, core mechanics, and scope.</p>
-            <p class="modal-label">My Role</p>
-            <p class="modal-text">Describe your specific contributions — what systems did you design and build?</p>
-            <p class="modal-label">Genre</p>
-            <div class="tags" style="margin-bottom:1.4rem">
-                <span class="tag tag-genre">Genre</span>
-            </div>
-            <div class="modal-links">
-                <a href="#" target="_blank" class="btn btn-primary">&#8599;&nbsp; GitHub Repo</a>
-                <a href="#" target="_blank" class="btn btn-ghost">&#9654;&nbsp; Live Demo / itch.io</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal-overlay" id="modal-2" onclick="closeModalOutside(event)">
-    <div class="modal">
-        <div class="modal-head">
-            <div>
-                <div class="tags"><span class="tag tag-engine">Unreal</span><span class="tag tag-lang">C++</span></div>
-                <div class="modal-title">Project Title Two</div>
-            </div>
-            <button class="modal-close" onclick="closeModal('modal-2')">&#x2715;</button>
-        </div>
-        <div class="modal-body">
-            <div class="modal-media-wrap">
-                <div class="modal-media-placeholder">Replace with &lt;img&gt; or &lt;video&gt;</div>
-            </div>
-            <p class="modal-label">Description</p>
-            <p class="modal-text">Write a description of this project here.</p>
-            <p class="modal-label">My Role</p>
-            <p class="modal-text">Describe your contributions here.</p>
-            <p class="modal-label">Genre</p>
-            <div class="tags" style="margin-bottom:1.4rem">
-                <span class="tag tag-genre">Genre</span>
-            </div>
-            <div class="modal-links">
-                <a href="#" target="_blank" class="btn btn-primary">&#8599;&nbsp; GitHub Repo</a>
-                <a href="#" target="_blank" class="btn btn-ghost">&#9654;&nbsp; Live Demo / itch.io</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal-overlay" id="modal-3" onclick="closeModalOutside(event)">
-    <div class="modal">
-        <div class="modal-head">
-            <div>
-                <div class="tags"><span class="tag tag-engine">Unity</span><span class="tag tag-lang">C#</span></div>
-                <div class="modal-title">Project Title Three</div>
-            </div>
-            <button class="modal-close" onclick="closeModal('modal-3')">&#x2715;</button>
-        </div>
-        <div class="modal-body">
-            <div class="modal-media-wrap">
-                <div class="modal-media-placeholder">Replace with &lt;img&gt; or &lt;video&gt;</div>
-            </div>
-            <p class="modal-label">Description</p>
-            <p class="modal-text">Write a description of this project here.</p>
-            <p class="modal-label">My Role</p>
-            <p class="modal-text">Describe your contributions here.</p>
-            <p class="modal-label">Genre</p>
-            <div class="tags" style="margin-bottom:1.4rem">
-                <span class="tag tag-genre">Genre</span>
-            </div>
-            <div class="modal-links">
-                <a href="#" target="_blank" class="btn btn-primary">&#8599;&nbsp; GitHub Repo</a>
-                <a href="#" target="_blank" class="btn btn-ghost">&#9654;&nbsp; Live Demo / itch.io</a>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!--
-    To add MODAL 4 or 5:
-    Copy one of the modal blocks above, change the id to "modal-4" / "modal-5",
-    update the onclick on .modal-close to match, then fill in your content.
+    MODAL TEMPLATE GUIDE
+    ─────────────────────────────────────────────────────────
+    Media options inside .modal-media-wrap (choose one):
+      Image: <img src="./img/project1.png" alt="...">
+      Video: <video src="./video/project1.mp4" controls muted loop playsinline></video>
+      None:  keep the .modal-media-placeholder div
+
+    Remove any .btn link you don't have a URL for.
+    ─────────────────────────────────────────────────────────
 -->
+
+<!-- Project modals are generated here by renderProjects() in the script below -->
+<div id="modals-container"></div>
+
 
 
 <script>
@@ -1004,19 +885,19 @@
 
     let pct = 0;
     const fillInterval = setInterval(() => {
-        pct += Math.random() * 0 + 5;
+        pct += Math.random() * 16 + 5;
         if (pct >= 100) {
             pct = 100;
             clearInterval(fillInterval);
             bar.style.width = '100%';
             pctEl.textContent = '100%';
             readyEl.classList.add('show');
-            setTimeout(typeNext, 100);
+            setTimeout(typeNext, 280);
         } else {
             bar.style.width = pct + '%';
             pctEl.textContent = Math.floor(pct) + '%';
         }
-    }, 100);
+    }, 300);
 
 
     // ── TYPING ANIMATION ──────────────────────────────────
@@ -1027,15 +908,157 @@
         if (charIndex <= NAME.length) {
             typedEl.textContent = NAME.slice(0, charIndex);
             charIndex++;
-            setTimeout(typeNext, 75);
+            setTimeout(typeNext, 85);
         }
     }
 
 
-    // ── PROJECT MODALS ────────────────────────────────────
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => openModal('modal-' + card.dataset.project));
-    });
+    // ══════════════════════════════════════════════════════
+    // TEMPLATE ②  PROJECT DATA — single source of truth.
+    // Edit each object here to update BOTH the card grid
+    // and the detail modal at the same time.
+    //
+    // Fields:
+    //   title       — project name
+    //   engine      — game engine (e.g. "Unity", "Unreal")
+    //   language    — main language (e.g. "C#", "C++")
+    //   genres      — array of strings (e.g. ["FPS", "Multiplayer"])
+    //   role        — your role on the card (e.g. "Lead Programmer")
+    //   thumb       — one of:
+    //                 { type: "placeholder", emoji: "🎮" }
+    //                 { type: "img",   src: "./img/p1.png", alt: "..." }
+    //                 { type: "video", src: "./video/p1.mp4" }
+    //   description — shown in the modal body
+    //   myRole      — detailed contributions, shown in the modal
+    //   links       — { github: "url", demo: "url" }
+    //                 omit either key to hide that button
+    //
+    // To ADD a project: add a new object to the array.
+    // To REMOVE one:   delete its object from the array.
+    // ══════════════════════════════════════════════════════
+    const projects = [
+        {
+            title:       "The Unchosen",
+            engine:      "Unreal",
+            language:    ["C++", "Blueprint"],
+            genres:      ["Souls-like", "Dark fantasy", "Difficult", "Atmospheric", "RPG"],
+            role:        "Gameplay Programmer",
+            thumb:       { type: "img", src: "./images/TheUnchosen.png", emoji: "🎮" },
+            description: "The Unchosen is a student project developed in <u>Unreal Engine</u> using both <u>Blueprint and C++</u>. It is a <u>parody of the Souls-like genre</u> where, instead of the 'Chosen One', you play as a thoroughly mediocre individual, subverting genre expectations while keeping the <u>same core mechanics</u>.",
+            myRole:      "In this project my main task was developing the <u>AI systems</u> for multiple enemy types and original bosses. This included: <br> - <u>Behaviour trees</u> specific to each enemy type; <br> - <u>States</u> such as Idle, Patrol, Investigation and Combat; <br> - <u>AI Senses</u> to handle how enemies perceive and react to the player.",
+                        //Describe your specific contributions — what systems did you design and build?",
+            links:       { github: "#", demo: "#" }
+        },
+        {
+            title:       "Riranny of Ghosts",
+            engine:      "Unity",
+            language:    "C#",
+            genres:      ["Story-rich", "Mistery", "Puzzle","Action-Adventure", "RPG"],
+            role:        "Gameplay Programmer",
+            thumb:       { type: "img", src: "./images/Tiranny_Of_Ghosts.jpg", emoji: "🕹️" },
+            description: "Tyranny of Ghosts is a singleplayer narrative experience that blends <u>resource management</u>, <u>puzzles</u>, <u>stealth mechanics</u> and some <u>decision-making</u> in a first-person medieval world. Gameplay revolves around the <u>Spirit Lantern</u> to capture enemy ghosts, a <u>Ghost Mode</u> that enhances movement and grants access to otherwise unreachable areas and find key objects not perceivale in <u>Human Mode</u>.",
+            myRole:      "In this project my main task was developing the <u>player systems</u> using Unity's <u>New Input System</u>, which included: <br> - <u>Inputs and movement</u>, including all the player's inputs, like sprinting, crouching, placing/removing the lantern, flying, etc.; <br> - <u>Camera movement</u> and its behaviour in both normal and Ghost Mode; <br> - <u>Spirit Lantern</u> with its own mechanics, like placing/cancelling, perceiving enemies and destroying them; <br> - <u>Ghost Mode</u> with its own movement and peculiarities, like flying or passing through some objects.",
+            links:       { github: "#", demo: "#" }
+        },
+        {
+            title:       "The Ascended One",
+            engine:      "Unity",
+            language:    "C#",
+            genres:      ["Turn-Based", "Roguelike", "Difficult", "Strategy", "RPG"],
+            role:        "Gameplay Programmer",
+            thumb:       { type: "img", src: "./images/TheAscendedOne.jpg", emoji: "⚔️" },
+            description: "The Ascended One is a singleplayer <u>tactical RPG</u> with a dark, mysterious atmosphere inspired by board game aesthetics. The player follows legendary general Edric Valmour on a morally ambiguous journey to resurrect a fallen king, facing four ancient Guardians across <u>turn-based grid combat</u>. Drawing inspiration from titles like <u>Final Fantasy Tactics</u> and <u>Inscryption</u>, the experience is linear and story-driven, combining strategic combat with metanarration where characters confront each other as pieces on a mystical map.",
+            myRole:      "In this project my main task was developing the <u>board and combat systems</u>. This included: <br> - The <u>game board</u> with its own tiles and special tiles; <br> - Multiple <u>character classes</u>, each with their own <u>unique set of statistics and attacks</u>, designed to offer <u>diverse and strategic gameplay options</u>; <br> - <u>Pathfinding</u> for the pawns using the <u>A* algorithm</u>, ensuring efficient and coherent movement across the grid.",
+            links:       { github: "#", demo: "#" }
+        }
+    ];
+
+    // ── PROJECT RENDERING ─────────────────────────────────
+    // Builds cards and modals from the projects array above.
+    // Do not edit this function — edit the data array instead.
+    function buildThumbHTML(thumb, forModal) {
+        if (thumb.type === 'img')
+            return `<img src="${thumb.src}" alt="${thumb.alt || ''}">`;
+        if (thumb.type === 'video')
+            return forModal
+                ? `<video src="${thumb.src}" controls muted loop playsinline></video>`
+                : `<video src="${thumb.src}" autoplay muted loop playsinline></video>`;
+        return forModal
+            ? `<div class="modal-media-placeholder">Replace .thumb with { type:"img", src:"./img/..." } or { type:"video", src:"./video/..." }</div>`
+            : `<div class="project-thumb-placeholder">${thumb.emoji}</div>`;
+    }
+
+    function renderProjects() {
+        const grid     = document.querySelector('.projects-grid');
+        const modals   = document.getElementById('modals-container');
+        let cardsHTML  = '';
+        let modalsHTML = '';
+
+        projects.forEach((p, i) => {
+            const id       = i + 1;
+            const genres   = p.genres.map(g => `<span class="tag tag-genre">${g}</span>`).join('');
+            const btnGH    = p.links?.github ? `<a href="${p.links.github}" target="_blank" class="btn btn-primary">&#8599;&nbsp; GitHub Repo</a>`       : '';
+            const btnDemo  = p.links?.demo   ? `<a href="${p.links.demo}"   target="_blank" class="btn btn-ghost">&#9654;&nbsp; Live Demo / itch.io</a>` : '';
+
+            cardsHTML += `
+                <div class="project-card" data-project="${id}">
+                    <div class="project-thumb">
+                        ${buildThumbHTML(p.thumb, false)}
+                        <div class="project-thumb-overlay">&#9654;&nbsp; Open Project</div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-title">${p.title}</div>
+                        <div class="tags">
+                            <span class="tag tag-engine">${p.engine}</span>
+                            <span class="tag tag-lang">${p.language}</span>
+                        </div>
+                        <div class="card-label">Genre</div>
+                        <div class="tags">${genres}</div>
+                        <div class="project-role">// ${p.role}</div>
+                    </div>
+                </div>`;
+
+            modalsHTML += `
+                <div class="modal-overlay" id="modal-${id}">
+                    <div class="modal">
+                        <div class="modal-head">
+                            <div>
+                                <div class="tags">
+                                    <span class="tag tag-engine">${p.engine}</span>
+                                    <span class="tag tag-lang">${p.language}</span>
+                                </div>
+                                <div class="modal-title">${p.title}</div>
+                            </div>
+                            <button class="modal-close">&#x2715;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-media-wrap">${buildThumbHTML(p.thumb, true)}</div>
+                            <p class="modal-label">Description</p>
+                            <p class="modal-text">${p.description}</p>
+                            <p class="modal-label">My Role</p>
+                            <p class="modal-text">${p.myRole}</p>
+                            <p class="modal-label">Genre</p>
+                            <div class="tags" style="margin-bottom:1.4rem">${genres}</div>
+                            ${btnGH || btnDemo ? `<div class="modal-links">${btnGH}${btnDemo}</div>` : ''}
+                        </div>
+                    </div>
+                </div>`;
+        });
+
+        grid.innerHTML   = cardsHTML;
+        modals.innerHTML = modalsHTML;
+
+        // Card click → open modal
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', () => openModal('modal-' + card.dataset.project));
+        });
+
+        // Modal: close button + click outside
+        document.querySelectorAll('.modal-overlay').forEach(ov => {
+            ov.addEventListener('click', e => { if (e.target === ov) closeModal(ov.id); });
+            ov.querySelector('.modal-close').addEventListener('click', () => closeModal(ov.id));
+        });
+    }
 
     function openModal(id) {
         document.getElementById(id).classList.add('open');
@@ -1045,12 +1068,8 @@
         document.getElementById(id).classList.remove('open');
         document.body.style.overflow = '';
     }
-    function closeModalOutside(e) {
-        if (e.target.classList.contains('modal-overlay')) {
-            e.target.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-    }
+
+    // Escape key closes any open modal
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') {
             document.querySelectorAll('.modal-overlay.open').forEach(m => {
@@ -1059,6 +1078,8 @@
             });
         }
     });
+
+    renderProjects();
 
 
     // ── EXPERIENCE ACCORDION ─────────────────────────────
@@ -1079,6 +1100,9 @@
     // ── ACTIVE TOC + MOBILE NAV HIGHLIGHT (scroll-position based) ───
     const tocItems = document.querySelectorAll('.toc-item');
     const sections = Array.from(document.querySelectorAll('section[id]'));
+    // NAV_H is intentionally 8px taller than --nav-height (56px) to give
+    // a small buffer so the active section switches just before its heading
+    // reaches the nav bar, rather than exactly at it.
     const NAV_H = 64;
 
     function updateActive() {
@@ -1087,6 +1111,7 @@
             if (sec.getBoundingClientRect().top <= NAV_H + 10) current = sec.id;
         }
         tocItems.forEach(t => t.classList.toggle('active', t.dataset.target === current));
+        // Mobile items queried fresh each time so late-added DOM is found
         document.querySelectorAll('.mobile-nav-item').forEach(m =>
             m.classList.toggle('active', m.dataset.target === current)
         );
@@ -1102,7 +1127,8 @@
         });
     });
 
-    // Mobile bottom bar
+    // Mobile bottom bar — delegated so it works even though the nav HTML
+    // is rendered after this script tag
     document.addEventListener('click', e => {
         const item = e.target.closest('.mobile-nav-item');
         if (!item) return;
@@ -1132,11 +1158,11 @@
         <span class="mobile-nav-label">Skills</span>
     </div>
     <div class="mobile-nav-item" data-target="projects">
-        <span class="mobile-nav-icon kw">&#9654;</span>
+        <span class="mobile-nav-icon kw">▶</span>
         <span class="mobile-nav-label">Projects</span>
     </div>
     <div class="mobile-nav-item" data-target="experience">
-        <span class="mobile-nav-icon ty">&#x229E;</span>
+        <span class="mobile-nav-icon ty">⊞</span>
         <span class="mobile-nav-label">Experience</span>
     </div>
     <div class="mobile-nav-item" data-target="social">
