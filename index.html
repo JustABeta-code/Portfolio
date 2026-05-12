@@ -12,7 +12,7 @@
             --bg:           #070b14;
             --bg-surface:   #0c1422;
             --card:         #101928;
-            --border:       #1b2d46;
+            --border:       #233144;
             --border-glow:  #2a4570;
             --cyan:   #4fc8ff;
             --green:  #7ee8a2;
@@ -200,7 +200,7 @@
         #hero {
             min-height: calc(50vh - var(--nav-height));
             display: flex; flex-direction: column; justify-content: center;
-            padding: 2rem 4rem; max-width: 1100px;
+            padding: 2rem 4rem; max-width: 2000px;
         }
 
         .hero-prompt { font-size: 12px; color: var(--green); margin-bottom: 0.8rem; }
@@ -220,7 +220,7 @@
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
         .hero-subtitle { font-size: clamp(11px, 1.6vw, 14px); margin-bottom: 0.4rem; }
-        .hero-bio { font-size: clamp(12px, 1.5vw, 14px); color: var(--text); line-height: 1.75; max-width: 520px; margin-top: 1.2rem; }
+        .hero-bio { font-size: clamp(12px, 1.5vw, 14px); color: var(--text); line-height: 1.75; max-width: 2000px; margin-top: 1.2rem; }
         .hero-cta { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
 
         .btn {
@@ -311,7 +311,7 @@
         .modal-media-wrap img { width: 100%; max-height: 280px; object-fit: cover; display: block; }
         .modal-media-wrap video { width: 100%; max-height: 280px; display: block; background: #000; }
         .modal-media-placeholder { padding: 2rem; }
-        .modal-label { font-size: 15px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.4rem; }
+        .modal-label { font-size: 15px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--cyan); margin-bottom: 0.4rem; }
         .modal-text  { font-size: 13px; color: var(--text); line-height: 1.75; margin-bottom: 1.2rem; }
         .modal-links { display: flex; gap: 0.75rem; margin-top: 1.4rem; flex-wrap: wrap; }
 
@@ -493,14 +493,16 @@
 
         <p class="hero-bio">
             <span class="op">/*</span>
-            Write a short bio about yourself here. What drives you as a developer?
-            What kind of experiences do you love building?
-            <span class="op">*/</span>
+            <br>I am a game programmer with hands-on experience in both Unity and Unreal Engine, with a growing focus on Unreal as my primary tool going forward. 
+            <br>I care deeply about understanding the roots of the problems I encounter before trying to solve them, 
+            <br>and I approach every project with honesty and a genuine commitment to doing things the best way I can. 
+            <br>I am always looking to improve, both as a programmer and as a collaborator, 
+            <br>and I believe that the most rewarding work comes from being part of a team that pushes each other to grow.
+            <br><span class="op">*/</span>
         </p>
 
         <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary">&#9654;&nbsp; View Projects</a>
-            <a href="./cv.pdf" download class="btn btn-ghost">&#8595;&nbsp; Download CV</a>
+            <a href="./CV/Ambroggi_Andrea_CV.pdf" download class="btn btn-ghost">&#8595;&nbsp; Download CV</a>
         </div>
     </section>
 
@@ -629,7 +631,7 @@
             </div>
 
             <div class="skill-category">
-                <div class="skill-category-label str">Project Mgmt</div>
+                <div class="skill-category-label str">Project Management</div>
                 <div class="skill-list">
                     <a href="https://trello.com" target="_blank" class="skill-item">
                         <span class="skill-dot" style="background:var(--cyan)"></span>
@@ -874,7 +876,7 @@
     //   engine      — game engine (e.g. "Unity", "Unreal")
     //   language    — main language (e.g. "C#", "C++")
     //   genres      — array of strings (e.g. ["FPS", "Multiplayer"])
-    //   role        — your role on the card (e.g. "Lead Programmer")
+    //   role        — role on the card (e.g. "Lead Programmer")
     //   thumb       — one of:
     //                 { type: "placeholder", emoji: "🎮" }
     //                 { type: "img",   src: "./img/p1.png", alt: "..." }
@@ -893,24 +895,24 @@
             engine:      "Unreal",
             language:    ["C++", "Blueprint"],
             genres:      ["Souls-like", "Dark fantasy", "Difficult", "Atmospheric", "RPG"],
-            role:        "Gameplay Programmer",
-            thumb:       { type: "img", src: "./Images/TheUnchosen.png", emoji: "🎮" },
-            thumbModal:  { type: "video", src: "./img/detailed.png", alt: "Project Name" },
+            role:        "Gameplay Programmer (AI)",
+            thumb:       { type: "img", src: "./ProjectsImages/TheUnchosen.png", emoji: "🎮" },
+            thumbModal:  { type: "video", src: "#", alt: "First Project Name" },
             description: "The Unchosen is a student project developed in <u>Unreal Engine</u> using both <u>Blueprint and C++</u>. It is a <u>parody of the Souls-like genre</u> where, instead of the 'Chosen One', you play as a thoroughly mediocre individual, subverting genre expectations while keeping the <u>same core mechanics</u>.",
             myRole:      "My main responsibility was designing and implementing the <u>AI systems</u> for multiple enemy types and original bosses. All enemies derive from a shared <u>EnemyBase</u> blueprint, which centralises their core functionality and ensures consistency across the different types. Building on this foundation, each enemy was given:<br> - <u>Behaviour trees</u> tailored to its specific type<br> - <u>States</u> such as Idle, Patrol, Investigation and Combat<br> - <u>AI Senses</u> to handle how it perceives and reacts to the player",
-            links:       { github: "#", demo: "#" }
+            //links:       { github: "#", demo: "#" }
         },
         {
-            title:       "Riranny of Ghosts",
+            title:       "Tiranny of Ghosts",
             engine:      "Unity",
             language:    "C#",
             genres:      ["Story-rich", "Mistery", "Puzzle","Action-Adventure", "RPG"],
             role:        "Gameplay Programmer",
-            thumb:       { type: "img", src: "./Images/Tiranny_Of_Ghosts.jpg", emoji: "🕹️" },
-            thumbModal:  { type: "video", src: "./img/detailed.png", alt: "Project Name" },
+            thumb:       { type: "img", src: "./ProjectsImages/Tiranny_Of_Ghosts.jpg", emoji: "🕹️" },
+            thumbModal:  { type: "video", src: "#", alt: "Second Project Name" },
             description: "Tyranny of Ghosts is a singleplayer narrative experience set in a first-person medieval world. The game blends <u>resource management</u>, <u>puzzles</u>, <u>stealth</u> and <u>decision-making</u> into a cohesive whole. At the core of the gameplay is the <u>Spirit Lantern</u>, used to capture enemy ghosts, and <u>Ghost Mode</u>, which enhances movement, and uncovers key objects invisible in <u>Human Mode</u>.",
             myRole:      "In this project my main tasks were developing the <u>player systems</u>, basing them on the new Unity's Input System. Some of them are: <br> - <u>Inputs and movement</u>, including all the player's inputs, like sprinting, crouching, placing/removing the lantern, flying, etc.; <br> - <u>Camera movement</u> and its behaviour in both normal and Ghost Mode; <br> - <u>Spirit Lantern</u> with its own mechanics, like placing/cancelling, perceiving enemies and destroying them; <br> - <u>Ghost Mode</u> with its own movement and peculiarities, like flying or passing through some objects.",
-            links:       { github: "#", demo: "#" }
+            links:       { /*github: "#",*/ demo: "https://robbecci.itch.io/tyranny-of-ghost" }
         },
         {
             title:       "The Ascended One",
@@ -918,10 +920,11 @@
             language:    "C#",
             genres:      ["Turn-Based", "Roguelike", "Difficult", "Strategy", "RPG"],
             role:        "Gameplay Programmer",
-            thumb:       { type: "img", src: "./Images/TheAscendedOne.jpg", emoji: "⚔️" },
+            thumb:       { type: "img", src: "./ProjectsImages/TheAscendedOne.jpg", emoji: "⚔️" },
+            thumbModal:  { type: "video", src: "#", alt: "Third Project Name" },
             description: "The Ascended One is a singleplayer <u>tactical RPG</u> with a dark, mysterious atmosphere inspired by board game aesthetics. The player follows legendary general Edric Valmour on a morally ambiguous journey to resurrect a fallen king, facing four ancient Guardians across <u>turn-based grid combat</u>. Drawing inspiration from titles like <u>Final Fantasy Tactics</u> and <u>Inscryption</u>, the experience is linear and story-driven, combining strategic combat with metanarration where characters confront each other as pieces on a mystical map.",
             myRole:      "In this project my main tasks were multiple, included developing: <br> - The <u>game board</u> with its own <u>base and special tiles</u>; <br>- the <u>turn system</u>, switched between the player and the enemy when exausting the piceces' actions; <br> - Multiple <u>character classes</u>, each with their own <u>unique set of statistics and attacks</u>; <br> - <u>Pathfinding</u> for the pawns using the <u>A* algorithm</u>, ensuring efficient and coherent movement across the grid.",
-            links:       { github: "#", demo: "#" }
+            //links:       { github: "#", demo: "#" }
         }
     ];
 
@@ -955,7 +958,7 @@
             cardsHTML += `
                 <div class="project-card" data-project="${id}">
                     <div class="project-thumb">
-                        ${buildThumbHTML(p.thumbModal|| p.thumb, false)}
+                        ${buildThumbHTML(p.thumb, false)}
                         <div class="project-thumb-overlay">&#9654;&nbsp; Open Project</div>
                     </div>
                     <div class="project-body">
@@ -984,7 +987,7 @@
                             <button class="modal-close">&#x2715;</button>
                         </div>
                         <div class="modal-body">
-                            <div class="modal-media-wrap">${buildThumbHTML(p.thumb, true)}</div>
+                            <div class="modal-media-wrap">${buildThumbHTML(p.thumb || p.thumbModal, true)}</div>
                             <p class="modal-label">Description</p>
                             <p class="modal-text">${p.description}</p>
                             <p class="modal-label">My Role</p>
