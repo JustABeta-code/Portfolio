@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- TEMPLATE: Update <title> with your full name -->
-    <title>[YOUR_NAME] — Game Programmer</title>
+    <title>Andrea_Ambroggi — Game Programmer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -299,7 +298,7 @@
         /* ── MODALS ── */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; visibility: hidden; transition: opacity var(--ease-slow), visibility var(--ease-slow); }
         .modal-overlay.open { opacity: 1; visibility: visible; }
-        .modal { background: var(--card); border: 1px solid var(--border-glow); border-radius: 10px; width: 100%; max-width: 660px; max-height: 88vh; overflow-y: auto; transform: translateY(18px) scale(0.97); transition: transform var(--ease-slow); }
+        .modal { background: var(--card); border: 1px solid var(--border-glow); border-radius: 10px; width: 100%; max-width: 650px; max-height: 100vh; overflow-y: auto; transform: translateY(18px) scale(0.97); transition: transform var(--ease-slow); }
         .modal-overlay.open .modal { transform: translateY(0) scale(1); }
         .modal-head { position: sticky; top: 0; background: var(--card); border-bottom: 1px solid var(--border); padding: 1.2rem 1.4rem 0.9rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
         .modal-title { font-size: 18px; font-weight: 700; color: #fff; margin-top: 0.35rem; }
@@ -312,7 +311,7 @@
         .modal-media-wrap img { width: 100%; max-height: 280px; object-fit: cover; display: block; }
         .modal-media-wrap video { width: 100%; max-height: 280px; display: block; background: #000; }
         .modal-media-placeholder { padding: 2rem; }
-        .modal-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.4rem; }
+        .modal-label { font-size: 15px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.4rem; }
         .modal-text  { font-size: 13px; color: var(--text); line-height: 1.75; margin-bottom: 1.2rem; }
         .modal-links { display: flex; gap: 0.75rem; margin-top: 1.4rem; flex-wrap: wrap; }
 
@@ -450,17 +449,16 @@
 <!-- Floating outline pill — right edge of screen -->
 <div class="toc" id="toc">
     <div class="toc-header">OUTLINE</div>
-    <div class="toc-item active" data-target="hero"><span class="toc-icon">~</span> Hero</div>
-    <div class="toc-item" data-target="skills"><span class="toc-icon fn">{}</span> Skills</div>
+    <div class="toc-item active" data-target="hero"><span class="toc-icon">~</span> Profile</div>
     <div class="toc-item" data-target="projects"><span class="toc-icon kw">▶</span> Projects</div>
+    <div class="toc-item" data-target="skills"><span class="toc-icon fn">{}</span> Skills</div>
     <div class="toc-item" data-target="experience"><span class="toc-icon ty">⊞</span> Experience</div>
     <div class="toc-item" data-target="social"><span class="toc-icon str">@</span> Contact</div>
 </div>
 
 <!-- Top navigation bar -->
 <header class="topnav">
-    <!-- TEMPLATE: Replace "YourName" with a short version of your name -->
-    <div class="nav-logo"><span class="op">//</span> &lt;YourName /&gt;</div>
+    <div class="nav-logo"><span class="op">//</span> &lt;Andrea_Ambroggi/Portfolio&gt;</div>
 </header>
 
 <main>
@@ -482,27 +480,17 @@
             <span class="boot-ready" id="boot-ready">&#x2714;&nbsp; Ready.</span>
         </div>
 
-        <!--
-            TEMPLATE ①: Set your name in the JS below: const NAME = "[YOUR FULL NAME]";
-            The typing animation will pick it up automatically.
-        -->
         <h1 class="hero-name">
             <span id="typed-name"></span><span class="cursor"></span>
         </h1>
 
-        <!--
-            TEMPLATE ②: Edit the subtitle text in the two spans below.
-        -->
         <p class="hero-subtitle">
             <span class="op">// </span>
             <span class="str">Game Programmer</span>
             <span class="op"> | </span>
-            <span class="ty">Unity &amp; Unreal Engine Developer</span>
+            <span class="ty">Unreal Engine &amp; Unity Developer</span>
         </p>
 
-        <!--
-            TEMPLATE ③: Replace this with your own 1–2 sentence bio.
-        -->
         <p class="hero-bio">
             <span class="op">/*</span>
             Write a short bio about yourself here. What drives you as a developer?
@@ -512,7 +500,6 @@
 
         <div class="hero-cta">
             <a href="#projects" class="btn btn-primary">&#9654;&nbsp; View Projects</a>
-            <!-- TEMPLATE ④: Set href to your CV file path, e.g. "./cv.pdf" — or remove this button. -->
             <a href="./cv.pdf" download class="btn btn-ghost">&#8595;&nbsp; Download CV</a>
         </div>
     </section>
@@ -721,18 +708,19 @@
                 <div class="tl-dot"></div>
                 <div class="tl-head">
                     <div>
-                        <div class="tl-role">Job Title or Degree Name</div>
-                        <div class="tl-org">Company or University Name</div>
+                        <div class="tl-role">Scientific High School - Applied Sciences</div>
+                        <div class="tl-org">Liceo Statale Rinaldo Corso</div>
                     </div>
                     <div class="tl-right">
-                        <div class="tl-period">20XX &mdash; Present</div>
-                        <div class="tl-type">Work</div>
+                        <div class="tl-period">2017 &mdash; 2022</div>
+                        <div class="tl-type">Highschool</div>
                     </div>
                     <span class="tl-chevron">&#9658;</span>
                 </div>
                 <div class="tl-body">
-                    Describe what you did here. You can include a link to
-                    <a href="https://example.com" target="_blank">your employer or institution</a>.
+                    Started studying computer science in the
+                    <a href="https://www.liceocorso.edu.it/indirizzo-di-studio/liceo-scientifico-opzione-scienze-applicate/" target="_blank">Applied Sciences</a> field. 
+                    Some of the languages used were <u>C/C++</u> and <u>Python</u>, graded by <u>multiple personal and team projects</u>.
                 </div>
             </div>
 
@@ -740,18 +728,19 @@
                 <div class="tl-dot"></div>
                 <div class="tl-head">
                     <div>
-                        <div class="tl-role">Job Title or Degree Name</div>
-                        <div class="tl-org">Company or University Name</div>
+                        <div class="tl-role">University - Department of Physics, Informatics and Mathematics</div>
+                        <div class="tl-org">UNIMORE</div>
                     </div>
                     <div class="tl-right">
-                        <div class="tl-period">20XX &mdash; 20XX</div>
-                        <div class="tl-type">Education</div>
+                        <div class="tl-period">2022 &mdash; 2024</div>
+                        <div class="tl-type">University</div>
                     </div>
                     <span class="tl-chevron">&#9658;</span>
                 </div>
                 <div class="tl-body">
-                    Describe this experience. Link to
-                    <a href="https://example.com" target="_blank">the institution's site</a> if you like.
+                    Continued studying <a href="https://www.fim.unimore.it/it/didattica/corsi-di-laurea-informazioni-generali/informatica" target="_blank">Computer Science</a> at the course
+                    covering fundamental computer science disciplines - including <u>algorithms</u>, <u>programming paradigms</u>, <u>computer architectures</u>, <u>operating systems</u>, <u>computer networking</u>, and <u>databases</u>, 
+                    with some of the main programming languages being <u>C/C++</u>, <u>Python</u>, <u>Java</u> and some database management systems, such as <a href="https://postgres.guide/docs/intro/" target="_blank">PostgreSQL</a>.
                 </div>
             </div>
 
@@ -759,50 +748,19 @@
                 <div class="tl-dot"></div>
                 <div class="tl-head">
                     <div>
-                        <div class="tl-role">Job Title or Degree Name</div>
-                        <div class="tl-org">Company or University Name</div>
+                        <div class="tl-role">ITS Course - Game Programming</div>
+                        <div class="tl-org">ITS Olivetti</div>
                     </div>
                     <div class="tl-right">
-                        <div class="tl-period">20XX &mdash; 20XX</div>
-                        <div class="tl-type">Work</div>
+                        <div class="tl-period">2024 &mdash; Present</div>
+                        <div class="tl-type">ITS Course</div>
                     </div>
                     <span class="tl-chevron">&#9658;</span>
                 </div>
-                <div class="tl-body">Describe this role here.</div>
-            </div>
-
-            <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-head">
-                    <div>
-                        <div class="tl-role">Job Title or Degree Name</div>
-                        <div class="tl-org">Company or University Name</div>
-                    </div>
-                    <div class="tl-right">
-                        <div class="tl-period">20XX &mdash; 20XX</div>
-                        <div class="tl-type">Education</div>
-                    </div>
-                    <span class="tl-chevron">&#9658;</span>
+                <div class="tl-body">
+                    Started studying multiple Game Engines and programming languages, such as <u>C++ and Blueprint</u> for Unreal Engine and <u>C#</u> for the Unity Engine.
                 </div>
-                <div class="tl-body">Describe this entry here.</div>
             </div>
-
-            <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-head">
-                    <div>
-                        <div class="tl-role">Job Title or Degree Name</div>
-                        <div class="tl-org">Company or University Name</div>
-                    </div>
-                    <div class="tl-right">
-                        <div class="tl-period">20XX &mdash; 20XX</div>
-                        <div class="tl-type">Work</div>
-                    </div>
-                    <span class="tl-chevron">&#9658;</span>
-                </div>
-                <div class="tl-body">Describe this entry here.</div>
-            </div>
-
         </div>
 
         <!-- Closing brace — same font size as the opening title -->
@@ -818,18 +776,15 @@
         </div>
 
         <div class="social-links">
-            <!-- TEMPLATE: Replace YOUR_GITHUB_USERNAME -->
-            <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" class="social-link github">
+            <a href="https://github.com/JustABeta-code" target="_blank" class="social-link github">
                 <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                 GitHub
             </a>
-            <!-- TEMPLATE: Replace YOUR_LINKEDIN_HANDLE -->
-            <a href="https://linkedin.com/in/YOUR_LINKEDIN_HANDLE" target="_blank" class="social-link linkedin">
+            <a href="https://linkedin.com/in/andrea-a-b1646836a" target="_blank" class="social-link linkedin">
                 <svg class="social-icon" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 LinkedIn
             </a>
-            <!-- TEMPLATE: Replace YOUR_EMAIL@example.com -->
-            <a href="mailto:YOUR_EMAIL@example.com" class="social-link email">
+            <a href="mailto:andreaambroggi03@gmail.com" class="social-link email">
                 <svg class="social-icon" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
                 Email
             </a>
@@ -840,9 +795,8 @@
 
 </main>
 
-<!-- TEMPLATE: Replace [YOUR_NAME] -->
 <footer>
-    <span><span style="color:var(--dim)">// </span>[YOUR_NAME] &mdash; Game Programmer</span>
+    <span><span style="color:var(--dim)">// </span>Andrea_Ambroggi &mdash; Game Programmer</span>
     <span>Built with HTML &middot; CSS &middot; JS</span>
 </footer>
 
@@ -872,10 +826,7 @@
 
 <script>
 
-    // ══════════════════════════════════════════════════════
-    // TEMPLATE ①  Set your full name here.
-    // ══════════════════════════════════════════════════════
-    const NAME = "[YOUR FULL NAME]";
+    const NAME = "Andrea Ambroggi";
 
 
     // ── BOOT PROGRESS BAR ─────────────────────────────────
@@ -885,19 +836,19 @@
 
     let pct = 0;
     const fillInterval = setInterval(() => {
-        pct += Math.random() * 16 + 5;
+        pct += Math.random() * 10 + 10;
         if (pct >= 100) {
             pct = 100;
             clearInterval(fillInterval);
             bar.style.width = '100%';
             pctEl.textContent = '100%';
             readyEl.classList.add('show');
-            setTimeout(typeNext, 280);
+            setTimeout(typeNext, 150);
         } else {
             bar.style.width = pct + '%';
             pctEl.textContent = Math.floor(pct) + '%';
         }
-    }, 300);
+    }, 100);
 
 
     // ── TYPING ANIMATION ──────────────────────────────────
@@ -943,10 +894,10 @@
             language:    ["C++", "Blueprint"],
             genres:      ["Souls-like", "Dark fantasy", "Difficult", "Atmospheric", "RPG"],
             role:        "Gameplay Programmer",
-            thumb:       { type: "img", src: "./images/TheUnchosen.png", emoji: "🎮" },
+            thumb:       { type: "img", src: "./Images/TheUnchosen.png", emoji: "🎮" },
+            thumbModal:  { type: "video", src: "./img/detailed.png", alt: "Project Name" },
             description: "The Unchosen is a student project developed in <u>Unreal Engine</u> using both <u>Blueprint and C++</u>. It is a <u>parody of the Souls-like genre</u> where, instead of the 'Chosen One', you play as a thoroughly mediocre individual, subverting genre expectations while keeping the <u>same core mechanics</u>.",
-            myRole:      "In this project my main task was developing the <u>AI systems</u> for multiple enemy types and original bosses. This included: <br> - <u>Behaviour trees</u> specific to each enemy type; <br> - <u>States</u> such as Idle, Patrol, Investigation and Combat; <br> - <u>AI Senses</u> to handle how enemies perceive and react to the player.",
-                        //Describe your specific contributions — what systems did you design and build?",
+            myRole:      "My main responsibility was designing and implementing the <u>AI systems</u> for multiple enemy types and original bosses. All enemies derive from a shared <u>EnemyBase</u> blueprint, which centralises their core functionality and ensures consistency across the different types. Building on this foundation, each enemy was given:<br> - <u>Behaviour trees</u> tailored to its specific type<br> - <u>States</u> such as Idle, Patrol, Investigation and Combat<br> - <u>AI Senses</u> to handle how it perceives and reacts to the player",
             links:       { github: "#", demo: "#" }
         },
         {
@@ -955,9 +906,10 @@
             language:    "C#",
             genres:      ["Story-rich", "Mistery", "Puzzle","Action-Adventure", "RPG"],
             role:        "Gameplay Programmer",
-            thumb:       { type: "img", src: "./images/Tiranny_Of_Ghosts.jpg", emoji: "🕹️" },
-            description: "Tyranny of Ghosts is a singleplayer narrative experience that blends <u>resource management</u>, <u>puzzles</u>, <u>stealth mechanics</u> and some <u>decision-making</u> in a first-person medieval world. Gameplay revolves around the <u>Spirit Lantern</u> to capture enemy ghosts, a <u>Ghost Mode</u> that enhances movement and grants access to otherwise unreachable areas and find key objects not perceivale in <u>Human Mode</u>.",
-            myRole:      "In this project my main task was developing the <u>player systems</u> using Unity's <u>New Input System</u>, which included: <br> - <u>Inputs and movement</u>, including all the player's inputs, like sprinting, crouching, placing/removing the lantern, flying, etc.; <br> - <u>Camera movement</u> and its behaviour in both normal and Ghost Mode; <br> - <u>Spirit Lantern</u> with its own mechanics, like placing/cancelling, perceiving enemies and destroying them; <br> - <u>Ghost Mode</u> with its own movement and peculiarities, like flying or passing through some objects.",
+            thumb:       { type: "img", src: "./Images/Tiranny_Of_Ghosts.jpg", emoji: "🕹️" },
+            thumbModal:  { type: "video", src: "./img/detailed.png", alt: "Project Name" },
+            description: "Tyranny of Ghosts is a singleplayer narrative experience set in a first-person medieval world. The game blends <u>resource management</u>, <u>puzzles</u>, <u>stealth</u> and <u>decision-making</u> into a cohesive whole. At the core of the gameplay is the <u>Spirit Lantern</u>, used to capture enemy ghosts, and <u>Ghost Mode</u>, which enhances movement, and uncovers key objects invisible in <u>Human Mode</u>.",
+            myRole:      "In this project my main tasks were developing the <u>player systems</u>, basing them on the new Unity's Input System. Some of them are: <br> - <u>Inputs and movement</u>, including all the player's inputs, like sprinting, crouching, placing/removing the lantern, flying, etc.; <br> - <u>Camera movement</u> and its behaviour in both normal and Ghost Mode; <br> - <u>Spirit Lantern</u> with its own mechanics, like placing/cancelling, perceiving enemies and destroying them; <br> - <u>Ghost Mode</u> with its own movement and peculiarities, like flying or passing through some objects.",
             links:       { github: "#", demo: "#" }
         },
         {
@@ -966,9 +918,9 @@
             language:    "C#",
             genres:      ["Turn-Based", "Roguelike", "Difficult", "Strategy", "RPG"],
             role:        "Gameplay Programmer",
-            thumb:       { type: "img", src: "./images/TheAscendedOne.jpg", emoji: "⚔️" },
+            thumb:       { type: "img", src: "./Images/TheAscendedOne.jpg", emoji: "⚔️" },
             description: "The Ascended One is a singleplayer <u>tactical RPG</u> with a dark, mysterious atmosphere inspired by board game aesthetics. The player follows legendary general Edric Valmour on a morally ambiguous journey to resurrect a fallen king, facing four ancient Guardians across <u>turn-based grid combat</u>. Drawing inspiration from titles like <u>Final Fantasy Tactics</u> and <u>Inscryption</u>, the experience is linear and story-driven, combining strategic combat with metanarration where characters confront each other as pieces on a mystical map.",
-            myRole:      "In this project my main task was developing the <u>board and combat systems</u>. This included: <br> - The <u>game board</u> with its own tiles and special tiles; <br> - Multiple <u>character classes</u>, each with their own <u>unique set of statistics and attacks</u>, designed to offer <u>diverse and strategic gameplay options</u>; <br> - <u>Pathfinding</u> for the pawns using the <u>A* algorithm</u>, ensuring efficient and coherent movement across the grid.",
+            myRole:      "In this project my main tasks were multiple, included developing: <br> - The <u>game board</u> with its own <u>base and special tiles</u>; <br>- the <u>turn system</u>, switched between the player and the enemy when exausting the piceces' actions; <br> - Multiple <u>character classes</u>, each with their own <u>unique set of statistics and attacks</u>; <br> - <u>Pathfinding</u> for the pawns using the <u>A* algorithm</u>, ensuring efficient and coherent movement across the grid.",
             links:       { github: "#", demo: "#" }
         }
     ];
@@ -1003,7 +955,7 @@
             cardsHTML += `
                 <div class="project-card" data-project="${id}">
                     <div class="project-thumb">
-                        ${buildThumbHTML(p.thumb, false)}
+                        ${buildThumbHTML(p.thumbModal|| p.thumb, false)}
                         <div class="project-thumb-overlay">&#9654;&nbsp; Open Project</div>
                     </div>
                     <div class="project-body">
@@ -1151,15 +1103,15 @@
 <nav class="mobile-nav">
     <div class="mobile-nav-item active" data-target="hero">
         <span class="mobile-nav-icon">~</span>
-        <span class="mobile-nav-label">Hero</span>
-    </div>
-    <div class="mobile-nav-item" data-target="skills">
-        <span class="mobile-nav-icon fn">{}</span>
-        <span class="mobile-nav-label">Skills</span>
+        <span class="mobile-nav-label">Profile</span>
     </div>
     <div class="mobile-nav-item" data-target="projects">
         <span class="mobile-nav-icon kw">▶</span>
         <span class="mobile-nav-label">Projects</span>
+    </div>
+    <div class="mobile-nav-item" data-target="skills">
+        <span class="mobile-nav-icon fn">{}</span>
+        <span class="mobile-nav-label">Skills</span>
     </div>
     <div class="mobile-nav-item" data-target="experience">
         <span class="mobile-nav-icon ty">⊞</span>
