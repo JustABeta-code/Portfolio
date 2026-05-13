@@ -12,7 +12,7 @@
             --bg:           #070b14;
             --bg-surface:   #0c1422;
             --card:         #101928;
-            --border:       #233144;
+            --border:       #1b2d46;
             --border-glow:  #2a4570;
             --cyan:   #4fc8ff;
             --green:  #7ee8a2;
@@ -232,7 +232,7 @@
         }
         .btn-primary { background: rgba(79,200,255,0.1); color: var(--cyan); border: 1px solid rgba(79,200,255,0.3); }
         .btn-primary:hover { background: rgba(79,200,255,0.18); border-color: var(--cyan); box-shadow: 0 0 22px rgba(79,200,255,0.15); transform: translateY(-2px); }
-        .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+        .btn-ghost { background: transparent; color: var(--cyan); border: 1px solid var(--border); }
         .btn-ghost:hover { color: var(--text); border-color: var(--border-glow); transform: translateY(-2px); }
 
         /* ── SECTION 2: SKILLS ── */
@@ -298,7 +298,7 @@
         /* ── MODALS ── */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; visibility: hidden; transition: opacity var(--ease-slow), visibility var(--ease-slow); }
         .modal-overlay.open { opacity: 1; visibility: visible; }
-        .modal { background: var(--card); border: 1px solid var(--border-glow); border-radius: 10px; width: 100%; max-width: 650px; max-height: 100vh; overflow-y: auto; transform: translateY(18px) scale(0.97); transition: transform var(--ease-slow); }
+        .modal { background: var(--card); border: 1px solid var(--border-glow); border-radius: 10px; width: 100%; max-width: 800px; max-height: 150vh; overflow-y: auto; transform: translateY(18px) scale(0.97); transition: transform var(--ease-slow); }
         .modal-overlay.open .modal { transform: translateY(0) scale(1); }
         .modal-head { position: sticky; top: 0; background: var(--card); border-bottom: 1px solid var(--border); padding: 1.2rem 1.4rem 0.9rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
         .modal-title { font-size: 18px; font-weight: 700; color: #fff; margin-top: 0.35rem; }
@@ -318,7 +318,7 @@
         /* ── SECTION 4: EXPERIENCE ── */
         #experience { border-top: 1px solid var(--border); }
         .timeline { position: relative; padding-left: 2rem; }
-        .timeline::before { content: ''; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 1px; background: linear-gradient(180deg, var(--cyan) 0%, var(--border) 100%); opacity: 0.35; }
+        .timeline::before { content: ''; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(180deg, var(--cyan) 0%, var(--border) 100%); opacity: 0.35; }
         .tl-item { position: relative; margin-bottom: 1rem; }
         .tl-dot { position: absolute; left: -2rem; top: 14px; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--cyan); background: var(--bg); transition: background var(--ease), box-shadow var(--ease); z-index: 1; }
         .tl-item.open .tl-dot { background: var(--cyan); box-shadow: 0 0 14px rgba(79,200,255,0.5); }
@@ -496,7 +496,7 @@
             <br>I am a game programmer with hands-on experience in both Unity and Unreal Engine, with a growing focus on Unreal as my primary tool going forward. 
             <br>I care deeply about understanding the roots of the problems I encounter before trying to solve them, 
             <br>and I approach every project with honesty and a genuine commitment to doing things the best way I can. 
-            <br>I am always looking to improve, both as a programmer and as a collaborator, 
+            <br>I'm always looking to improve, both as a programmer and as a collaborator, 
             <br>and I believe that the most rewarding work comes from being part of a team that pushes each other to grow.
             <br><span class="op">*/</span>
         </p>
@@ -705,27 +705,24 @@
             ─────────────────────────────────────────────────────────
         -->
         <div class="timeline">
-
             <div class="tl-item">
                 <div class="tl-dot"></div>
                 <div class="tl-head">
                     <div>
-                        <div class="tl-role">Scientific High School - Applied Sciences</div>
-                        <div class="tl-org">Liceo Statale Rinaldo Corso</div>
+                        <div class="tl-role">ITS Course - Game Programming</div>
+                        <div class="tl-org">ITS Olivetti</div>
                     </div>
                     <div class="tl-right">
-                        <div class="tl-period">2017 &mdash; 2022</div>
-                        <div class="tl-type">Highschool</div>
+                        <div class="tl-period">2024 &mdash; Present</div>
+                        <div class="tl-type">ITS Course</div>
                     </div>
                     <span class="tl-chevron">&#9658;</span>
                 </div>
                 <div class="tl-body">
-                    Started studying computer science in the
-                    <a href="https://www.liceocorso.edu.it/indirizzo-di-studio/liceo-scientifico-opzione-scienze-applicate/" target="_blank">Applied Sciences</a> field. 
-                    Some of the languages used were <u>C/C++</u> and <u>Python</u>, graded by <u>multiple personal and team projects</u>.
+                    In <a href="https://itsolivetti.it/corso/game-programmer/" target="_blank">this course</a> I'm currently studying multiple Game Engines and programming languages, such as <u>C++ and Blueprint</u> for <u>Unreal Engine</u> and <u>C#</u> for the <u>Unity Engine</u>.
                 </div>
             </div>
-
+            
             <div class="tl-item">
                 <div class="tl-dot"></div>
                 <div class="tl-head">
@@ -750,17 +747,19 @@
                 <div class="tl-dot"></div>
                 <div class="tl-head">
                     <div>
-                        <div class="tl-role">ITS Course - Game Programming</div>
-                        <div class="tl-org">ITS Olivetti</div>
+                        <div class="tl-role">Scientific High School - Applied Sciences</div>
+                        <div class="tl-org">Liceo Statale Rinaldo Corso</div>
                     </div>
                     <div class="tl-right">
-                        <div class="tl-period">2024 &mdash; Present</div>
-                        <div class="tl-type">ITS Course</div>
+                        <div class="tl-period">2017 &mdash; 2022</div>
+                        <div class="tl-type">Highschool</div>
                     </div>
                     <span class="tl-chevron">&#9658;</span>
                 </div>
                 <div class="tl-body">
-                    Started studying multiple Game Engines and programming languages, such as <u>C++ and Blueprint</u> for Unreal Engine and <u>C#</u> for the Unity Engine.
+                    Started studying computer science in the
+                    <a href="https://www.liceocorso.edu.it/indirizzo-di-studio/liceo-scientifico-opzione-scienze-applicate/" target="_blank">Applied Sciences</a> field. 
+                    Some of the languages used were <u>C/C++</u> and <u>Python</u>, graded by <u>multiple personal and team projects</u>.
                 </div>
             </div>
         </div>
@@ -821,14 +820,11 @@
     ─────────────────────────────────────────────────────────
 -->
 
-<!-- Project modals are generated here by renderProjects() in the script below -->
 <div id="modals-container"></div>
-
-
 
 <script>
 
-    const NAME = "Andrea Ambroggi";
+    const NAME = "Andrea_Ambroggi";
 
 
     // ── BOOT PROGRESS BAR ─────────────────────────────────
@@ -952,6 +948,8 @@
         projects.forEach((p, i) => {
             const id       = i + 1;
             const genres   = p.genres.map(g => `<span class="tag tag-genre">${g}</span>`).join('');
+            const engines  = (Array.isArray(p.engine)   ? p.engine   : [p.engine])  .map(e => `<span class="tag tag-engine">${e}</span>`).join('');
+            const langs    = (Array.isArray(p.language) ? p.language : [p.language]).map(l => `<span class="tag tag-lang">${l}</span>`)  .join('');
             const btnGH    = p.links?.github ? `<a href="${p.links.github}" target="_blank" class="btn btn-primary">&#8599;&nbsp; GitHub Repo</a>`       : '';
             const btnDemo  = p.links?.demo   ? `<a href="${p.links.demo}"   target="_blank" class="btn btn-ghost">&#9654;&nbsp; Live Demo / itch.io</a>` : '';
 
@@ -963,10 +961,7 @@
                     </div>
                     <div class="project-body">
                         <div class="project-title">${p.title}</div>
-                        <div class="tags">
-                            <span class="tag tag-engine">${p.engine}</span>
-                            <span class="tag tag-lang">${p.language}</span>
-                        </div>
+                        <div class="tags">${engines}${langs}</div>
                         <div class="card-label">Genre</div>
                         <div class="tags">${genres}</div>
                         <div class="project-role">// ${p.role}</div>
@@ -978,10 +973,7 @@
                     <div class="modal">
                         <div class="modal-head">
                             <div>
-                                <div class="tags">
-                                    <span class="tag tag-engine">${p.engine}</span>
-                                    <span class="tag tag-lang">${p.language}</span>
-                                </div>
+                                <div class="tags">${engines}${langs}</div>
                                 <div class="modal-title">${p.title}</div>
                             </div>
                             <button class="modal-close">&#x2715;</button>
